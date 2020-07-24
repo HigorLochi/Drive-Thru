@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
 int main(){
-	setlocale(LC_ALL, "English");
-	char resp,order[5];
-	int codR,qtdR,inc;
-	float xbur=10,xegg=12,xbac=12.50,xmou=15,fries=7,soda=5,orderV[5],final;
+	char resp,order[6];
+	int codR,qtdR;
+	float xbur=10,xegg=12,xbac=12.50,xmou=15,fries=7,soda=5,orderV[7],final;
 	
 	printf("Welcome to the Big Mouse\nMenu:\n");
 	printf("Product          Value        Code\n");
@@ -29,35 +27,35 @@ int main(){
 		scanf("%i",&qtdR);
 		
 		if(codR == 01){
-			orderV[0]+= xbur*qtdR;
+			orderV[0]= orderV[0] + (xbur*qtdR);
 			order[0] = 'S';
-			final += orderV[0];
+			final += xbur*qtdR;
 		}else if(codR == 02){
-			orderV[1]+= xegg*qtdR;
+			orderV[1]= orderV[1] + (xegg*qtdR);
 			order[1] = 'S';
-			final += orderV[1];
-		} else if(codR == 03){
-			orderV[2]+= xbac*qtdR;
+			final += xegg*qtdR;
+		}else if(codR == 03){
+			orderV[2]= orderV[2] + (xbac*qtdR);
 			order[2] = 'S';
-			final += orderV[2];
-		} else if(codR == 04){
-			orderV[3]+= xmou*qtdR;
+			final += xbac*qtdR;
+		}else if(codR == 04){
+			orderV[3]= orderV[3] + (xmou*qtdR);
 			order[3] = 'S';
-			final += orderV[3];
-		} else if(codR == 05){
+			final += xmou*qtdR;
+		}else if(codR == 05){
 			orderV[4]+= fries*qtdR;
 			order[4] = 'S';
-			final += orderV[4];
+			final += fries*qtdR;
 		} else if(codR == 06){
 			orderV[5]+= soda*qtdR;
 			order[5] = 'S';
-			final += orderV[5];
+			final += soda*qtdR;
         } 
         printf("Continue?(S/N)");
         scanf("%s",&resp);
 	}while(resp == 'S');
 	
-	printf("Your order\nProduct            Value\n");
+	printf("\n-------Your order-------\nProduct          Value\n");
 	
 	if(order[0] == 'S'){
 		printf("X-burguer %12.2f\n",orderV[0]);
@@ -72,11 +70,11 @@ int main(){
 		printf("X-mouse   %12.2f\n",orderV[3]);
 	}
 	if(order[4] == 'S'){
-		printf("fries     %12.2f\n",orderV[4]);
+		printf("Fries     %12.2f\n",orderV[4]);
 	}
 	if(order[5] == 'S'){
-		printf("soda      %12.2f\n",orderV[5]);
+		printf("Soda      %12.2f\n",orderV[5]);
 	}
 	
-	printf("Total value: US$ %.2f",final);
+	printf("\nTotal value: US$ %.2f",final);
 }
